@@ -2,10 +2,12 @@
     "compilerOptions": {
         "allowJs": true,
         "checkJs": true,
-        "target": "ES3",
+        "target": "ES2015",
         "module": "ESNext",
+        "moduleResolution": "bundler",
         "noEmit": true,
         "lib": ["ESNext"],
+        "jsx": "react",
     },
     "include": [
         ".",

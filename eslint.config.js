@@ -17,7 +17,7 @@ function moduleExists(moduleName) {
     try {
         require.resolve(moduleName)
         return true
-    } catch (e) {
+    } catch {
         return false
     }
 }
@@ -33,6 +33,16 @@ config.push(
             'jsx-a11y': JsxA11y,
         },
         rules: JsxA11y.configs.recommended.rules,
+    },
+    {
+        files: ['**/*.jsx'],
+        languageOptions: {
+            parserOptions: {
+                ecmaFeatures: {
+                    jsx: true,
+                },
+            },
+        },
     },
 )
 
