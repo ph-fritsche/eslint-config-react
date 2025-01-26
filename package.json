@@ -11,6 +11,7 @@
   "type": "module",
   "main": "./config.js",
   "files": [
+    "./config.js",
     "./config.d.ts"
   ],
   "peerDependencies": {
