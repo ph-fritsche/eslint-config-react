@@ -194,6 +194,7 @@ config.push(
             'dist/**',
             'node_modules/**',
             'var/**',
+            '**/*.d.ts',
         ],
     },
 )
