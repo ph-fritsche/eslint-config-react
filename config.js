@@ -194,6 +194,7 @@ config.push(
             'dist/**',
             'node_modules/**',
             'var/**',
+            '**/__snapshots__/',
             '**/*.d.ts',
         ],
     },

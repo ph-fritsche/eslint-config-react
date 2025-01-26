@@ -5,7 +5,6 @@ export default [
     {
         ignores: [
             'examples/',
-            '__snapshots__/',
         ],
     },
 ]
