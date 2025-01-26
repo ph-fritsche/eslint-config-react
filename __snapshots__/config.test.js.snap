@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`lint javascript.js 1`] = `
+{
+  "code": 1,
+  "err": "",
+  "out": "
+examples/javascript.js
+  2:10  error  'foo' is defined but never used               no-unused-vars
+  4:1   error  Expected indentation of 4 spaces but found 8  indent
+
+✖ 2 problems (2 errors, 0 warnings)
+  1 error and 0 warnings potentially fixable with the \`--fix\` option.
+
+",
+}
+`;
+
+exports[`lint javascriptxml.jsx 1`] = `
+{
+  "code": 1,
+  "err": "",
+  "out": "
+examples/javascriptxml.jsx
+  4:10  error  'foo' is defined but never used                                                                                                                                                                    no-unused-vars
+  6:12  error  Avoid non-native interactive elements. If using native HTML is not possible, add an appropriate role and support for tabbing, mouse, keyboard, and touch inputs to an interactive content element  jsx-a11y/no-static-element-interactions
+
+✖ 2 problems (2 errors, 0 warnings)
+
+",
+}
+`;
+
+exports[`lint typescript.ts 1`] = `
+{
+  "code": 1,
+  "err": "",
+  "out": "
+examples/typescript.ts
+  2:10  error  'foo' is defined but never used                                                                                                                                     @typescript-eslint/no-unused-vars
+  4:5   error  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the \`void\` operator  @typescript-eslint/no-floating-promises
+
+✖ 2 problems (2 errors, 0 warnings)
+
+",
+}
+`;
+
+exports[`lint typescriptxml.tsx 1`] = `
+{
+  "code": 1,
+  "err": "",
+  "out": "
+examples/typescriptxml.tsx
+  4:10  error  'foo' is defined but never used                                                                                                                                                                    @typescript-eslint/no-unused-vars
+  6:12  error  Avoid non-native interactive elements. If using native HTML is not possible, add an appropriate role and support for tabbing, mouse, keyboard, and touch inputs to an interactive content element  jsx-a11y/no-static-element-interactions
+
+✖ 2 problems (2 errors, 0 warnings)
+
+",
+}
+`;

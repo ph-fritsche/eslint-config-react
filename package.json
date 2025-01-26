@@ -9,7 +9,8 @@
   "author": "Philipp Fritsche",
   "license": "MIT",
   "type": "module",
-  "main": "./index.js",
+  "main": "./config.js",
+  "files": [],
   "peerDependencies": {
     "eslint": ">=8.57.0"
   },
@@ -32,6 +33,7 @@
     "typescript": "^5.7.3"
   },
   "scripts": {
-    "lint": "yarn eslint ."
+    "lint": "eslint .",
+    "test": "NODE_OPTIONS='--experimental-vm-modules' jest"
   }
 }
