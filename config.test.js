@@ -3,8 +3,8 @@ import {readdir} from 'node:fs/promises'
 import {Buffer} from 'node:buffer'
 import {cwd} from 'node:process'
 
-/** @type {Promise<{code: number, out: Buffer, err: Buffer}>} */
 function lint(
+    /** @type {string} */
     file,
 ) {
     const child = spawn('node', [

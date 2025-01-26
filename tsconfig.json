@@ -1,18 +1,18 @@
 {
     "compilerOptions": {
+        "noEmit": true,
+        "declaration": true,
+        "emitDeclarationOnly": true,
         "allowJs": true,
         "checkJs": true,
-        "target": "ES2015",
+        "skipLibCheck": true,
+        "target": "ES2022",
         "module": "ESNext",
         "moduleResolution": "bundler",
-        "noEmit": true,
         "lib": ["ESNext"],
         "jsx": "react",
     },
     "include": [
         ".",
-    ],
-    "exclude": [
-        "**/*.js",
     ],
 }

@@ -22,6 +22,7 @@ function moduleExists(moduleName) {
     }
 }
 
+/** @type {import('eslint').Linter.Config[]} */
 const config = [
     eslint.configs.recommended,
 ]
@@ -119,6 +120,7 @@ if (moduleExists('typescript')) {
         {
             files: ['**/*.{ts,tsx}'],
             plugins: {
+                // @ts-ignore
                 '@typescript-eslint': TsLint,
             },
             rules: {

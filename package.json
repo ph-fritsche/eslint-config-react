@@ -10,7 +10,9 @@
   "license": "MIT",
   "type": "module",
   "main": "./config.js",
-  "files": [],
+  "files": [
+    "./config.d.ts"
+  ],
   "peerDependencies": {
     "eslint": ">=8.57.0"
   },
@@ -26,6 +28,7 @@
     "globals": "^15.14.0"
   },
   "devDependencies": {
+    "@types/jest": "^29.5.14",
     "@types/react": "^18.3.18",
     "eslint": "^9.19.0",
     "jest": "^29.4.3",
