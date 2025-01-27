@@ -7,11 +7,11 @@
         "target": "ES2022",
         "module": "ESNext",
         "moduleResolution": "bundler",
-        "lib": ["ESNext"],
-        "types": [
-            "node",
-            "vitest/globals",
+        "allowSyntheticDefaultImports": true,
+        "lib": [
+            "ESNext"
         ],
+        "jsx": "react",
     },
     "include": [
         ".",
