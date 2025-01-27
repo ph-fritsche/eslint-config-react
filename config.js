@@ -113,7 +113,7 @@ if (moduleExists('typescript')) {
             languageOptions: {
                 parser: TsParser,
                 parserOptions: {
-                    project: './tsconfig.json',
+                    projectService: true,
                 },
             },
         },
