@@ -27,6 +27,8 @@ function moduleExists(moduleName: string) {
  * @internal
  */
 export const filePatterns = {
+    jsFiles: ['**/*.{js,jsx,mjs,cjs}'],
+    tsFiles: ['**/*.{ts,tsx,mts,cts}'],
     jtsxFiles: ['**/*.[jt]sx'],
     testFiles: [
         ['{test,tests}/**', '**/*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}'],
@@ -34,21 +36,11 @@ export const filePatterns = {
         '**/*.{test,spec}.{js,jsx,mjs,cjs,ts,tsx,mts,cts}',
     ],
     storyFiles: ['**/*.stories.{js,jsx,mjs,cjs,ts,tsx,mts,cts}'],
-    jsFiles: ['**/*.{js,jsx,mjs,cjs}'],
-    tsFiles: ['**/*.{ts,tsx,mts,cts}'],
 }
 
 const config: Linter.Config[] = [
-    eslint.configs.recommended,
-]
-
-config.push(
     {
-        files: [...filePatterns.jtsxFiles],
-        plugins: {
-            'jsx-a11y': JsxA11y,
-        },
-        rules: JsxA11y.configs.recommended.rules,
+        files: [...filePatterns.jsFiles],
     },
     {
         files: [...filePatterns.jtsxFiles],
@@ -60,69 +52,10 @@ config.push(
             },
         },
     },
-)
+    eslint.configs.recommended,
+]
 
-if (moduleExists('jest')) {
-    config.push(
-        {
-            files: [...filePatterns.testFiles],
-            plugins: {
-                'jest': Jest,
-            },
-            rules: Jest.configs.recommended.rules,
-            languageOptions: {
-                globals: globals.jest,
-            },
-        },
-        {
-            files: [...filePatterns.testFiles],
-            plugins: {
-                'jest-dom': JestDom,
-            },
-            rules: JestDom.configs.recommended.rules,
-        },
-    )
-}
-
-if (moduleExists('react')) {
-    config.push(
-        {
-            plugins: {
-                'react': React,
-            },
-            rules: React.configs.recommended.rules,
-            settings: {
-                react: {
-                    version: 'detect',
-                },
-            },
-        },
-        {
-            plugins: {
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-                'react-hooks': ReactHooks,
-            },
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-            rules: ReactHooks.configs.recommended.rules,
-        },
-        {
-            plugins: {
-                'testing-library': TestingLibrary,
-            },
-            rules: TestingLibrary.configs.react.rules,
-        },
-    )
-} else {
-    config.push(
-        {
-            plugins: {
-                'testing-library': TestingLibrary,
-            },
-            rules: TestingLibrary.configs.dom.rules,
-        },
-    )
-}
-
+// Typescript
 if (moduleExists('typescript')) {
     config.push(
         {
@@ -168,6 +101,92 @@ if (moduleExists('typescript')) {
     )
 }
 
+// Jest
+if (moduleExists('jest')) {
+    config.push(
+        {
+            files: [...filePatterns.testFiles],
+            plugins: {
+                'jest': Jest,
+            },
+            rules: Jest.configs.recommended.rules,
+            languageOptions: {
+                globals: globals.jest,
+            },
+        },
+        {
+            files: [...filePatterns.testFiles],
+            plugins: {
+                'jest-dom': JestDom,
+            },
+            rules: JestDom.configs.recommended.rules,
+        },
+    )
+}
+
+// React
+if (moduleExists('react')) {
+    config.push(
+        {
+            plugins: {
+                'react': React,
+            },
+            rules: React.configs.recommended.rules,
+            settings: {
+                react: {
+                    version: 'detect',
+                },
+            },
+        },
+        {
+            plugins: {
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+                'react-hooks': ReactHooks,
+            },
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+            rules: ReactHooks.configs.recommended.rules,
+        },
+        {
+            files: [...filePatterns.testFiles, ...filePatterns.storyFiles],
+            rules: {
+                'react/prop-types': 0,
+            },
+        },
+    )
+}
+
+// TestingLib
+if (moduleExists('react')) {
+    config.push(
+        {
+            plugins: {
+                'testing-library': TestingLibrary,
+            },
+            rules: TestingLibrary.configs.react.rules,
+        },
+    )
+} else {
+    config.push(
+        {
+            plugins: {
+                'testing-library': TestingLibrary,
+            },
+            rules: TestingLibrary.configs.dom.rules,
+        },
+    )
+}
+
+// A11y
+config.push(
+    {
+        files: [...filePatterns.jtsxFiles],
+        plugins: {
+            'jsx-a11y': JsxA11y,
+        },
+        rules: JsxA11y.configs.recommended.rules,
+    },
+)
+
 config.push(
     {
         rules: {
@@ -180,15 +199,6 @@ config.push(
             'operator-linebreak': [2, 'before'],
             'quotes': [2, 'single', {avoidEscape: true, allowTemplateLiterals: true}],
             'semi': [2, 'never', { beforeStatementContinuationChars: 'always' }],
-        },
-    },
-    {
-        files: [...filePatterns.jsFiles],
-    },
-    {
-        files: [...filePatterns.testFiles, ...filePatterns.storyFiles],
-        rules: {
-            'react/prop-types': 0,
         },
     },
 )

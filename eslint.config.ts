@@ -5,6 +5,7 @@ export default [
     {
         ignores: [
             'examples/',
+            'config.js',
         ],
     },
 ]
