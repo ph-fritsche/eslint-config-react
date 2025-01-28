@@ -7,7 +7,7 @@ exports[`lint javascript.js 1`] = `
   "out": "
 examples/javascript.js
   2:10  error  'foo' is defined but never used               no-unused-vars
-  4:1   error  Expected indentation of 4 spaces but found 8  indent
+  4:1   error  Expected indentation of 4 spaces but found 8  @stylistic/indent
 
 ✖ 2 problems (2 errors, 0 warnings)
   1 error and 0 warnings potentially fixable with the \`--fix\` option.

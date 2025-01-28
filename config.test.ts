@@ -87,11 +87,15 @@ for (const f of await readdir('examples')) {
     }, 30_000)
 }
 
-import { ConfigArray } from '@eslint/config-array'
-import { filePatterns } from './config'
+import {ConfigArray} from '@eslint/config-array'
+import {filePatterns} from './config'
 
 describe('match files', () => {
-    const matches: {[k: string]: {[k in keyof typeof filePatterns]?: boolean}} = {
+    const matches: {
+        [k: string]: {
+            [k in keyof typeof filePatterns]?: boolean
+        }
+    } = {
         '/example/foo.js': {jsFiles: true},
         '/example/foo.jsx': {jsFiles: true, jtsxFiles: true},
         '/example/foo.mjs': {jsFiles: true},
@@ -151,7 +155,7 @@ describe('match files', () => {
     for (const patternName of Object.keys(filePatterns)) {
         test(patternName, () => {
             const config = new ConfigArray([
-                {files : filePatterns[patternName] as string[]},
+                {files: filePatterns[patternName] as string[]},
             ], {
                 normalized: true,
                 basePath: '/example',

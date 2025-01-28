@@ -5,6 +5,7 @@
         "declaration": true,
         "stripInternal": true,
         "removeComments": true,
+        "allowImportingTsExtensions": false,
     },
     "include": [
         "./config.ts",
